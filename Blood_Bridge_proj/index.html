@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Bridge - Connecting Donors & Saving Lives</title>
+  
+  <!-- Local Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <style>
+    :root {
+      --primary-red: #d90429;
+      --hover-red: #ef233c;
+      --dark-blue: #1e2030;
+      --light-gray: #f8f9fa;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-gray);
+      color: #333d47;
+    }
+
+    /* Navbar styling with transparent blur effect */
+    .navbar {
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-red) !important;
+      letter-spacing: -0.5px;
+    }
+
+    .btn-brand-primary {
+      background-color: var(--primary-red);
+      color: white;
+      border: none;
+      font-weight: 600;
+      padding: 0.6rem 1.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-brand-primary:hover {
+      background-color: var(--hover-red);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 4, 41, 0.3);
+    }
+
+    .btn-brand-outline {
+      border: 2px solid var(--primary-red);
+      color: var(--primary-red);
+      font-weight: 600;
+      padding: 0.5rem 1.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-brand-outline:hover {
+      background-color: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section with Text-Protection Gradient Mask + Background Image */
+    .hero-section {
+      background: linear-gradient(to right, rgba(15, 17, 26, 0.95) 35%, rgba(15, 17, 26, 0.7) 70%, rgba(15, 17, 26, 0.4) 100%), 
+                  url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center center;
+      color: white;
+      padding: 140px 0 160px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating UI Mockup Styles layered over image */
+    .hero-graphic-wrapper {
+      position: relative;
+      min-height: 380px;
+    }
+
+    .floating-card-1 {
+      animation: float 6s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .floating-card-2 {
+      animation: float 6s ease-in-out infinite 3s;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Glassmorphic Stats Overlay */
+    .stats-card {
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      margin-top: -60px;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Features Section */
+    .feature-card {
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 20px;
+      background: white;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon-wrapper {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background-color: rgba(217, 4, 41, 0.08);
+      color: var(--primary-red);
+    }
+
+    .navbar-logo {
+    height: 40px;        /* Forces the massive logo to shrink into navbar size */
+    width: auto;         /* Prevents it from looking squished or distorted */
+    object-fit: contain; /* Keeps the proportions clean */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="Images/check.png" alt="Blood Bridge Logo" class="me-2 navbar-logo"> Blood Bridge
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-semibold text-dark active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-semibold text-dark" href="#how-it-works">Find Donor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-semibold text-dark" href="#contact">Contact</a>
+          </li>
+        </ul>
+        
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item my-2 my-lg-0"><a href="login.html" class="btn btn-brand-outline rounded-pill">Login</a></li>
+          <li class="nav-item ms-lg-2"><a href="register.html" class="btn btn-brand-primary rounded-pill">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+ <header class="hero-section text-center text-lg-start d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <span class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 mb-3 px-3 py-2 rounded-pill fs-6 fw-semibold">
+            <i class="bi bi-shield-heart me-1"></i> Community Lifeline Platform
+          </span>
+          <h1 class="display-4 fw-bold mb-3 text-white" style="line-height: 1.2; letter-spacing: -1px;">
+            Connecting Blood Donors & Saving Lives Instantly
+          </h1>
+          <p class="lead text-white-50 mb-4 fs-5">
+            Blood Bridge maps available donors with neighbors and hospitals in real-time. Join our platform to become a lifeline for someone today.
+          </p>
+          <div class="d-sm-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+            <a href="register.html" class="btn btn-brand-primary btn-lg rounded-pill mb-3 mb-sm-0">Join as a Donor</a>
+            <a href="login.html" class="btn btn-outline-light btn-lg rounded-pill px-4">Request Blood</a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 hero-graphic-wrapper d-none d-lg-block">
+          
+          <div class="card border-0 shadow-lg p-3 rounded-4 floating-card-1 bg-white text-dark position-absolute" style="width: 320px; top: 10%; right: 5%;">
+            <div class="d-flex align-items-center">
+              <div class="icon-wrapper bg-danger bg-opacity-10 text-danger me-3">
+                <i class="bi bi-droplet-fill fs-4"></i>
+              </div>
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 fw-bold">Urgent B+ Required</h6>
+                  <span class="badge bg-danger rounded-pill px-2" style="font-size: 10px;">Critical</span>
+                </div>
+                <small class="text-muted d-block mt-1">General Hospital • 1.2km away</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="card border-0 shadow-lg p-3 rounded-4 floating-card-2 position-absolute" style="width: 290px; bottom: 15%; left: 5%; background: rgba(255, 255, 255, 0.85) !important; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.4) !important; color: #1e2030;">
+            <div class="d-flex align-items-center">
+              <img src="Images/blood-donation.png" alt="Active Status" class="rounded-circle me-3 shadow-sm" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid white;">
+              <div>
+                <h6 class="mb-0 fw-bold" style="color: var(--dark-blue);">1,480 Active Donors</h6>
+                <small class="text-muted fw-medium">Online & ready in your city</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Impact Stats Banner -->
+  <section class="container position-relative">
+    <div class="stats-card p-4 p-md-5">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3">
+          <h2 class="fw-bold text-danger mb-1">15k+</h2>
+          <p class="text-muted mb-0 small text-uppercase fw-bold tracking-wider">Active Donors</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="fw-bold text-danger mb-1">8.5k+</h2>
+          <p class="text-muted mb-0 small text-uppercase fw-bold tracking-wider">Lives Saved</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="fw-bold text-danger mb-1">45+</h2>
+          <p class="text-muted mb-0 small text-uppercase fw-bold tracking-wider">Partner Hospitals</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="fw-bold text-danger mb-1">10 min</h2>
+          <p class="text-muted mb-0 small text-uppercase fw-bold tracking-wider">Avg. Match Time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-5 my-5">
+    <div class="container py-3">
+      <div class="text-center mb-5 mx-auto" style="max-width: 600px;">
+        <h2 class="fw-bold fs-1">How Blood Bridge Works</h2>
+        <p class="text-muted fs-5">An efficient, zero-delay engine designed to protect lives and minimize response windows during medical emergencies.</p>
+      </div>
+      <div class="row g-4">
+        <!-- Step 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card p-4 h-100 feature-card shadow-sm">
+            <div class="icon-wrapper mb-4">
+              <i class="bi bi-person-plus-fill fs-3"></i>
+            </div>
+            <h5 class="fw-bold">1. Quick Registration</h5>
+            <p class="text-muted small mb-0">Securely sign up as a verified donor, recipient, or partner medical institution within minutes.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card p-4 h-100 feature-card shadow-sm">
+            <div class="icon-wrapper mb-4">
+              <i class="bi bi-megaphone-fill fs-3"></i>
+            </div>
+            <h5 class="fw-bold">2. Post Request</h5>
+            <p class="text-muted small mb-0">Broadcast an immediate request specifying exact blood criteria, hospital location, and critical window details.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card p-4 h-100 feature-card shadow-sm">
+            <div class="icon-wrapper mb-4">
+              <i class="bi bi-lightning-charge-fill fs-3"></i>
+            </div>
+            <h5 class="fw-bold">3. Intelligent Match</h5>
+            <p class="text-muted small mb-0">Our engine maps blood types instantly and targets nearby matching donors with dynamic local alerts.</p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card p-4 h-100 feature-card shadow-sm">
+            <div class="icon-wrapper mb-4">
+              <i class="bi bi-hand-thumbs-up-fill fs-3"></i>
+            </div>
+            <h5 class="fw-bold">4. Fast Connection</h5>
+            <p class="text-muted small mb-0">Donors confirm dispatch instantly, establishing seamless parameters between individuals and clinics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Find Donor Search Section -->
+  <section id="find-donor" class="py-5 bg-white border-top border-bottom">
+    <div class="container py-4">
+      
+      <!-- Section Heading -->
+      <div class="text-center mb-5 mx-auto" style="max-width: 600px;">
+        <span class="badge bg-danger bg-opacity-10 text-danger mb-2 px-3 py-1 rounded-pill fw-bold">Live Search Engine</span>
+        <h2 class="fw-bold fs-1">Find a Blood Donor Near You</h2>
+        <p class="text-muted">Enter your requirements below to query real-time active lifelines in your immediate geographic radius.</p>
+      </div>
+
+      <!-- Professional Search & Filter Panel Card -->
+      <div class="card border-0 shadow-sm p-4 rounded-4 bg-light mb-5">
+        <form class="row g-3 align-items-end">
+          <!-- Filter 1: Blood Group -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold text-dark small">Required Blood Type</label>
+            <select class="form-select py-2.5 rounded-3 border-secondary border-opacity-25">
+              <option selected>Select Blood Group</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+
+          <!-- Filter 2: Location Search Bar -->
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-dark small">Your Location</label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-secondary border-opacity-25 text-muted"><i class="bi bi-geo-alt"></i></span>
+              <input type="text" class="form-control py-2.5 border-start-0 border-secondary border-opacity-25 rounded-end-3" placeholder="Enter city, district, or hospital area...">
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="col-md-3">
+            <button type="button" class="btn btn-brand-primary w-100 py-2.5 rounded-3 shadow-sm">
+              <i class="bi bi-search me-2"></i>Search For Donors
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Professional Section Filler: Quick Look / Recent Active Donors Layout -->
+      <div class="row g-4">
+        <div class="col-10">
+          <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-circle-fill text-success me-2" style="font-size: 10px;"></i>Nearby Available Donors (Real-time Demo)</h5>
+          <p class="text-muted small">These verified individuals are currently active and ready to assist.</p>
+        </div>
+        
+        <!-- Mock Donor Card 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-3 rounded-4 bg-white border-start border-danger border-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person-circle fs-2 text-secondary me-2"></i>
+                <div>
+                  <h6 class="mb-0 fw-bold">Anindo Zaman</h6>
+                  <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i>Verified Donor</small>
+                </div>
+              </div>
+              <span class="badge bg-danger fs-5 px-3 py-1 rounded-3">O+</span>
+            </div>
+            <div class="text-muted small">
+              <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-danger"></i>Dhaka, Dhanmondi (1.4 km away)</p>
+              <p class="mb-0"><i class="bi bi-clock-history me-2 text-primary"></i>Last Donated: 4 months ago</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mock Donor Card 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-3 rounded-4 bg-white border-start border-danger border-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person-circle fs-2 text-secondary me-2"></i>
+                <div>
+                  <h6 class="mb-0 fw-bold">Mosrur Chowdhury</h6>
+                  <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i>Verified Donor</small>
+                </div>
+              </div>
+              <span class="badge bg-danger fs-5 px-3 py-1 rounded-3">A+</span>
+            </div>
+            <div class="text-muted small">
+              <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-danger"></i>Dhaka, Mirpur (3.1 km away)</p>
+              <p class="mb-0"><i class="bi bi-clock-history me-2 text-primary"></i>Last Donated: 6 months ago</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mock Donor Card 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-3 rounded-4 bg-white border-start border-danger border-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person-circle fs-2 text-secondary me-2"></i>
+                <div>
+                  <h6 class="mb-0 fw-bold">Labiba Afrida</h6>
+                  <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i>Verified Donor</small>
+                </div>
+              </div>
+              <span class="badge bg-danger fs-5 px-3 py-1 rounded-3">B+</span>
+            </div>
+            <div class="text-muted small">
+              <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-danger"></i>Dhaka, Gulshan (4.8 km away)</p>
+              <p class="mb-0"><i class="bi bi-clock-history me-2 text-primary"></i>Last Donated: Available Now</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-5 mt-5">
+    <div class="container">
+      <div class="mb-3">
+       <a class="text-white text-decoration-none fw-bold fs-4 d-inline-flex align-items-center" href="#">
+          <img src="Images/check.png" alt="Blood Bridge Logo" class="me-2 navbar-logo"> Blood Bridge
+        </a>
+      </div>
+      <p class="mb-1 text-white-50">&copy; 2026 Blood Bridge Project. Developed for CSE327.</p>
+      <small class="text-white-50">Quickly bridging gaps to save lives, one drop at a time.</small>
+    </div>
+  </footer>
+
+  <!-- Local Bootstrap JS bundle -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

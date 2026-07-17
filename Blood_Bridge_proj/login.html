@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bridge - Login</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+    <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold"><a href="index.html" class="text-danger text-decoration-none">Blood Bridge</a></h2>
+            <p class="text-muted">Welcome back! Please login to your account.</p>
+        </div>
+        
+        <!-- 1. Added id="loginForm" so our script can control it -->
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-danger w-100 py-2 mb-3">Sign In</button>
+        </form>
+
+        <div class="text-center">
+            <p class="mb-0 text-muted">Don't have an account? <a href="register.html" class="text-danger text-decoration-none fw-bold">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- 2. The Backdoor Controller Script -->
+    <script>
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const form = document.getElementById('loginForm');
+
+        // Dynamic bypass: Watches what you type in real time
+        emailInput.addEventListener('input', function() {
+            const currentValue = emailInput.value.trim().toLowerCase();
+
+            if (currentValue === "admin-bridge") {
+                // Turns off the browser's "@" verification check and password requirement
+                form.setAttribute('novalidate', '');
+                passwordInput.removeAttribute('required');
+            } else {
+                // Switches it back on for normal emails
+                form.removeAttribute('novalidate');
+                passwordInput.setAttribute('required', '');
+            }
+        });
+
+        // Redirect router upon form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const emailValue = emailInput.value.trim().toLowerCase();
+
+            if (emailValue === "admin-bridge") {
+                alert("👑 Admin Code Accepted! Opening Admin Panel...");
+                window.location.href = "admin.html"; 
+            } else {
+                alert("Login successful! Welcome back.");
+                window.location.href = "index.html"; 
+            }
+        });
+    </script>
+
+</body>
+</html>
